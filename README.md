@@ -152,3 +152,14 @@ data analytics skills. The analysis is limited to the 34 Bayer
 Leverkusen fixtures included in the selected StatsBomb dataset. It
 should not be interpreted as complete Bundesliga season statistics for
 every club.
+
+## Dashboard Preview
+
+### 1. Season Overview
+![Season Overview](Screenshots/01_Season_Overview.png)
+
+### 2. Home vs Away Analysis
+![Home vs Away Analysis](Screenshots/02_home_away_analysis.png)
+
+### 3. Match Analysis
+![Match Analysis](Screenshots/03_match_analysis.png)
