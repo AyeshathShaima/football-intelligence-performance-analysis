@@ -1,0 +1,174 @@
+-- View: public.bayer_season_summary
+
+-- DROP VIEW public.bayer_season_summary;
+
+CREATE OR REPLACE VIEW public.bayer_season_summary
+ AS
+ SELECT count(*) AS matches_played,
+    count(*) FILTER (WHERE result = 'Win'::text) AS wins,
+    count(*) FILTER (WHERE result = 'Draw'::text) AS draws,
+    count(*) FILTER (WHERE result = 'Loss'::text) AS losses,
+    sum(goals_scored) AS goals_scored,
+    sum(goals_conceded) AS goals_conceded,
+    sum(goals_scored) - sum(goals_conceded) AS goal_difference,
+    round(count(*) FILTER (WHERE result = 'Win'::text)::numeric * 100.0 / count(*)::numeric, 2) AS win_percentage
+   FROM bayer_leverkusen_match_analysis;
+
+ALTER TABLE public.bayer_season_summary
+    OWNER TO postgres;
+
+
+-- View: public.bayer_home_away_summary
+
+-- DROP VIEW public.bayer_home_away_summary;
+
+CREATE OR REPLACE VIEW public.bayer_home_away_summary
+ AS
+ SELECT venue,
+    count(*) AS matches_played,
+    count(*) FILTER (WHERE result = 'Win'::text) AS wins,
+    count(*) FILTER (WHERE result = 'Draw'::text) AS draws,
+    count(*) FILTER (WHERE result = 'Loss'::text) AS losses,
+    sum(goals_scored) AS goals_scored,
+    sum(goals_conceded) AS goals_conceded,
+    round(count(*) FILTER (WHERE result = 'Win'::text)::numeric * 100.0 / count(*)::numeric, 2) AS win_percentage
+   FROM bayer_leverkusen_match_analysis
+  GROUP BY venue;
+
+ALTER TABLE public.bayer_home_away_summary
+    OWNER TO postgres;
+
+
+-- View: public.bayer_opponent_summary
+
+-- DROP VIEW public.bayer_opponent_summary;
+
+CREATE OR REPLACE VIEW public.bayer_opponent_summary
+ AS
+ SELECT opponent,
+    count(*) AS matches_played,
+    count(*) FILTER (WHERE result = 'Win'::text) AS wins,
+    count(*) FILTER (WHERE result = 'Draw'::text) AS draws,
+    count(*) FILTER (WHERE result = 'Loss'::text) AS losses,
+    sum(goals_scored) AS goals_scored,
+    sum(goals_conceded) AS goals_conceded
+   FROM bayer_leverkusen_match_analysis
+  GROUP BY opponent
+  ORDER BY (count(*) FILTER (WHERE result = 'Win'::text)) DESC, (sum(goals_scored)) DESC;
+
+ALTER TABLE public.bayer_opponent_summary
+    OWNER TO postgres;
+
+
+-- View: public.bayer_leverkusen_match_analysis
+
+-- DROP VIEW public.bayer_leverkusen_match_analysis;
+
+CREATE OR REPLACE VIEW public.bayer_leverkusen_match_analysis
+ AS
+ SELECT match_date,
+        CASE
+            WHEN home_team::text = 'Bayer Leverkusen'::text THEN away_team
+            ELSE home_team
+        END AS opponent,
+        CASE
+            WHEN home_team::text = 'Bayer Leverkusen'::text THEN 'Home'::text
+            ELSE 'Away'::text
+        END AS venue,
+        CASE
+            WHEN home_team::text = 'Bayer Leverkusen'::text THEN home_score
+            ELSE away_score
+        END AS goals_scored,
+        CASE
+            WHEN home_team::text = 'Bayer Leverkusen'::text THEN away_score
+            ELSE home_score
+        END AS goals_conceded,
+        CASE
+            WHEN home_team::text = 'Bayer Leverkusen'::text AND home_score > away_score OR away_team::text = 'Bayer Leverkusen'::text AND away_score > home_score THEN 'Win'::text
+            WHEN home_score = away_score THEN 'Draw'::text
+            ELSE 'Loss'::text
+        END AS result
+   FROM clean_matches
+  WHERE home_team::text = 'Bayer Leverkusen'::text OR away_team::text = 'Bayer Leverkusen'::text;
+
+ALTER TABLE public.bayer_leverkusen_match_analysis
+    OWNER TO postgres;
+
+-- =========================================
+-- INDIVIDUAL SQL ANALYSIS QUERIES
+-- =========================================
+
+-- 1. Bayer Leverkusen Win, Draw and Loss Record
+
+SELECT
+    COUNT(*) FILTER (
+        WHERE (home_team = 'Bayer Leverkusen' AND home_score > away_score)
+           OR (away_team = 'Bayer Leverkusen' AND away_score > home_score)
+    ) AS wins,
+
+    COUNT(*) FILTER (
+        WHERE home_score = away_score
+    ) AS draws,
+
+    COUNT(*) FILTER (
+        WHERE (home_team = 'Bayer Leverkusen' AND home_score < away_score)
+           OR (away_team = 'Bayer Leverkusen' AND away_score < home_score)
+    ) AS losses
+
+FROM clean_matches
+WHERE home_team = 'Bayer Leverkusen'
+   OR away_team = 'Bayer Leverkusen';
+
+-- 2. Bayer Luverkusen Win percentage
+SELECT
+    ROUND(
+        COUNT(*) FILTER (
+            WHERE (home_team = 'Bayer Leverkusen' AND home_score > away_score)
+               OR (away_team = 'Bayer Leverkusen' AND away_score > home_score)
+        ) * 100.0 / COUNT(*), 2
+    ) AS win_percentage
+FROM clean_matches
+WHERE home_team = 'Bayer Leverkusen'
+   OR away_team = 'Bayer Leverkusen';
+
+--3. Bayer home vs away performance
+SELECT
+    CASE
+        WHEN home_team = 'Bayer Leverkusen' THEN 'Home'
+        ELSE 'Away'
+    END AS venue,
+    COUNT(*) AS matches,
+    SUM(CASE
+        WHEN (home_team = 'Bayer Leverkusen' AND home_score > away_score)
+          OR (away_team = 'Bayer Leverkusen' AND away_score > home_score)
+        THEN 1 ELSE 0
+    END) AS wins
+FROM clean_matches
+WHERE home_team = 'Bayer Leverkusen'
+   OR away_team = 'Bayer Leverkusen'
+GROUP BY venue;
+
+--4.Bayer goals by venue
+SELECT
+    CASE
+        WHEN home_team = 'Bayer Leverkusen' THEN 'Home'
+        ELSE 'Away'
+    END AS venue,
+    SUM(CASE
+        WHEN home_team = 'Bayer Leverkusen' THEN home_score
+        ELSE away_score
+    END) AS goals_scored,
+    SUM(CASE
+        WHEN home_team = 'Bayer Leverkusen' THEN away_score
+        ELSE home_score
+    END) AS goals_conceded
+FROM clean_matches
+WHERE home_team = 'Bayer Leverkusen'
+   OR away_team = 'Bayer Leverkusen'
+GROUP BY venue;
+
+--5.total goals across all 34 matches
+SELECT
+    SUM(home_score) + SUM(away_score) AS total_goals,
+    ROUND(AVG(home_score + away_score), 2) AS average_goals_per_match
+FROM clean_matches;
