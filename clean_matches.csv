@@ -1,0 +1,35 @@
+match_id,match_date,kick_off,home_team_id,home_team,away_team_id,away_team,home_score,away_score,competition,country,season,stadium,referee
+3890563,2016-05-14,15:30:00.000,904,Bayer Leverkusen,189,Ingolstadt,3,2,1. Bundesliga,Germany,2015/2016,BayArena,Guido Winkmann
+3890550,2016-05-07,15:30:00.000,185,Borussia Mönchengladbach,904,Bayer Leverkusen,2,1,1. Bundesliga,Germany,2015/2016,Stadion im BORUSSIA-PARK,Bastian Dankert
+3890540,2016-04-30,18:30:00.000,904,Bayer Leverkusen,173,Hertha Berlin,2,1,1. Bundesliga,Germany,2015/2016,BayArena,Tobias Stieler
+3890534,2016-04-23,18:30:00.000,181,Schalke 04,904,Bayer Leverkusen,2,3,1. Bundesliga,Germany,2015/2016,VELTINS-Arena,Wolfgang Stark
+3890521,2016-04-16,15:30:00.000,904,Bayer Leverkusen,184,Eintracht Frankfurt,3,0,1. Bundesliga,Germany,2015/2016,BayArena,Deniz Aytekin
+3890519,2016-04-10,17:30:00.000,186,FC Köln,904,Bayer Leverkusen,0,2,1. Bundesliga,Germany,2015/2016,RheinEnergieStadion,Manuel Gräfe
+3890502,2016-04-01,20:30:00.000,904,Bayer Leverkusen,179,Wolfsburg,3,0,1. Bundesliga,Germany,2015/2016,BayArena,Felix Brych
+3890500,2016-03-20,16:30:00.000,174,VfB Stuttgart,904,Bayer Leverkusen,0,2,1. Bundesliga,Germany,2015/2016,MHPArena,Daniel Siebert
+3890492,2016-03-13,16:30:00.000,904,Bayer Leverkusen,171,Hamburger SV,1,0,1. Bundesliga,Germany,2015/2016,BayArena,Christian Dingert
+3890477,2016-03-05,16:30:00.000,172,Augsburg,904,Bayer Leverkusen,3,3,1. Bundesliga,Germany,2015/2016,WWK Arena,Markus Schmidt
+3890472,2016-03-02,21:00:00.000,904,Bayer Leverkusen,176,Werder Bremen,1,4,1. Bundesliga,Germany,2015/2016,BayArena,Marco Fritz
+3890463,2016-02-28,18:30:00.000,177,FSV Mainz 05,904,Bayer Leverkusen,3,1,1. Bundesliga,Germany,2015/2016,Mewa Arena,Deniz Aytekin
+3890456,2016-02-21,16:30:00.000,904,Bayer Leverkusen,180,Borussia Dortmund,0,1,1. Bundesliga,Germany,2015/2016,BayArena,Felix Zwayer
+3890444,2016-02-13,16:30:00.000,872,Darmstadt 98,904,Bayer Leverkusen,1,2,1. Bundesliga,Germany,2015/2016,Merck-Stadion am Böllenfalltor,Jochen Drees
+3890431,2016-02-06,19:30:00.000,904,Bayer Leverkusen,169,Bayern Munich,0,0,1. Bundesliga,Germany,2015/2016,BayArena,Knut Kircher
+3890427,2016-01-30,16:30:00.000,904,Bayer Leverkusen,178,Hannover 96,3,0,1. Bundesliga,Germany,2015/2016,BayArena,Tobias Welz
+3890415,2016-01-23,16:30:00.000,175,Hoffenheim,904,Bayer Leverkusen,1,1,1. Bundesliga,Germany,2015/2016,PreZero Arena,Marco Fritz
+3890409,2015-12-19,16:30:00.000,189,Ingolstadt,904,Bayer Leverkusen,0,1,1. Bundesliga,Germany,2015/2016,Audi-Sportpark,Felix Zwayer
+3890395,2015-12-12,19:30:00.000,904,Bayer Leverkusen,185,Borussia Mönchengladbach,5,0,1. Bundesliga,Germany,2015/2016,BayArena,Tobias Stieler
+3890390,2015-12-05,16:30:00.000,173,Hertha Berlin,904,Bayer Leverkusen,2,1,1. Bundesliga,Germany,2015/2016,Olympiastadion Berlin,Robert Hartmann
+3890382,2015-11-29,18:30:00.000,904,Bayer Leverkusen,181,Schalke 04,1,1,1. Bundesliga,Germany,2015/2016,BayArena,Marco Fritz
+3890370,2015-11-21,16:30:00.000,184,Eintracht Frankfurt,904,Bayer Leverkusen,1,3,1. Bundesliga,Germany,2015/2016,Deutsche Bank Park,Deniz Aytekin
+3890359,2015-11-07,16:30:00.000,904,Bayer Leverkusen,186,FC Köln,1,2,1. Bundesliga,Germany,2015/2016,BayArena,Felix Zwayer
+3890350,2015-10-31,19:30:00.000,179,Wolfsburg,904,Bayer Leverkusen,2,1,1. Bundesliga,Germany,2015/2016,Volkswagen Arena,Manuel Gräfe
+3890346,2015-10-24,15:30:00.000,904,Bayer Leverkusen,174,VfB Stuttgart,4,3,1. Bundesliga,Germany,2015/2016,BayArena,Felix Brych
+3890337,2015-10-17,15:30:00.000,171,Hamburger SV,904,Bayer Leverkusen,0,0,1. Bundesliga,Germany,2015/2016,Volksparkstadion,Tobias Welz
+3890330,2015-10-04,17:30:00.000,904,Bayer Leverkusen,172,Augsburg,1,1,1. Bundesliga,Germany,2015/2016,BayArena,Tobias Stieler
+3890315,2015-09-26,15:30:00.000,176,Werder Bremen,904,Bayer Leverkusen,0,3,1. Bundesliga,Germany,2015/2016,Wohninvest Weserstadion ,Wolfgang Stark
+3890312,2015-09-23,20:00:00.000,904,Bayer Leverkusen,177,FSV Mainz 05,1,0,1. Bundesliga,Germany,2015/2016,BayArena,Marco Fritz
+3890301,2015-09-20,17:30:00.000,180,Borussia Dortmund,904,Bayer Leverkusen,3,0,1. Bundesliga,Germany,2015/2016,Signal-Iduna-Park,Deniz Aytekin
+3890288,2015-09-12,15:30:00.000,904,Bayer Leverkusen,872,Darmstadt 98,0,1,1. Bundesliga,Germany,2015/2016,BayArena,Peter Sippel
+3890278,2015-08-29,18:30:00.000,169,Bayern Munich,904,Bayer Leverkusen,3,0,1. Bundesliga,Germany,2015/2016,Allianz Arena,Florian Meyer
+3890273,2015-08-22,15:30:00.000,178,Hannover 96,904,Bayer Leverkusen,0,1,1. Bundesliga,Germany,2015/2016,Heinz von Heiden-Arena,Wolfgang Stark
+3890260,2015-08-15,15:30:00.000,904,Bayer Leverkusen,175,Hoffenheim,2,1,1. Bundesliga,Germany,2015/2016,BayArena,Robert Hartmann
